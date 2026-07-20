@@ -7,21 +7,31 @@ Tool Used
 - Wireshark
 
 Procedure
-The packet capture file example-traffic.pcapng was opened in Wireshark. TCP traffic was filtered to simplify the analysis. After filtering, the packets related to the connection establishment were examined.
+The packet capture file `example-traffic.pcapng` was opened in Wireshark. TCP traffic was filtered to display only TCP packets. The connection establishment process was then examined by identifying the SYN, SYN/ACK, and ACK packets.
 
-Analysis
+TCP Traffic Filter
+The `tcp` display filter was applied to display only TCP traffic in the packet capture.
 
-The captured traffic shows the standard TCP three-way handshake process.
-First, the client initiated the connection by sending a SYN packet to the server.
-The server responded with a SYN/ACK packet, indicating that it received the request and was ready to establish the connection.
-Finally, the client replied with an ACK packet, completing the handshake.
-This sequence confirms that the TCP connection was successfully established.
+![TCP Traffic Filter](../screenshots/tcp-filter.png)
 
-Evidence
+TCP Three-Way Handshake Analysis
 
-The following screenshots were captured during the analysis:
-- TCP traffic filtered in Wireshark (tcp-filter.png)
-- TCP three-way handshake (tcp-handshake.png)
+The TCP three-way handshake is the process used to establish a reliable connection between a client and a server.
+
+The connection begins when the client sends a **SYN** packet to the server requesting to start a new TCP session.
+
+The server replies with a **SYN/ACK** packet, acknowledging the request and indicating that it is ready to establish the connection.
+
+Finally, the client sends an **ACK** packet to confirm the connection. After this exchange, the TCP session is successfully established.
+
+Observations
+- Protocol: **TCP**
+- Connection initiated with a **SYN** packet.
+- Server responded with **SYN/ACK**.
+- Client completed the handshake with **ACK**.
+- The connection was successfully established.
+
+![TCP Three-Way Handshake](../screenshots/tcp-handshake.png)
 
 Conclusion
-The analysis demonstrates the normal TCP connection establishment process. The packet capture contains all three required packets (SYN, SYN/ACK, and ACK), confirming that the connection between the client and the server was established successfully.
+The packet capture demonstrates a successful TCP three-way handshake. All three required packets (SYN, SYN/ACK, and ACK) are present, confirming that the client and the server established a reliable TCP connection before exchanging data.
